@@ -8,6 +8,14 @@ import streamlit as st
 from core import analytics as an
 from core import db, importer, llm, reports
 
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"message": "AI Expense Analysis API is running"}
+
 st.set_page_config(page_title="AI Expense Analyzer", page_icon="💸", layout="wide")
 db.init_db()
 
